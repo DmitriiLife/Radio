@@ -1,60 +1,56 @@
 package ru.netology;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
+    Radio wave = new Radio();
+
     @Test
-    public void NextRadio() {
-        Radio wave = new Radio();
-        wave.NextRadio();
-        int expected = 0;
-        int actual = wave.nextWave;
-        assertEquals(expected, actual);
+    public void nextRadioWave() {
+        wave.setCurrentWave(9);
+        wave.nextRadioWave();
+        assertEquals(0, wave.getCurrentWave());
     }
 
     @Test
-    public void PreviousRadio() {
-        Radio wave = new Radio();
-        wave.PreviousRadio();
-        int expected = 9;
-        int actual = wave.previousWave;
-        assertEquals(expected, actual);
+    public void decreaseWave() {
+        wave.setCurrentWave(5);
+        wave.decreaseWave();
+        assertEquals(4, wave.getCurrentWave());
     }
 
     @Test
-    public void setCurrentRadio() {
-        Radio wave = new Radio();
-        int expected = 0;
-        int actual = wave.currentWave;
-        assertEquals(expected, actual);
+    public void decreaseVolume() {
+        wave.setCurrentVolume(3);
+        wave.decreaseVolume();
+        assertEquals(2, wave.getCurrentVolume());
     }
 
     @Test
-    public void RadioPlus() {
-        Radio wave = new Radio();
-        wave.RadioPlus();
-        int expected = 1;
-        int actual = wave.currentVolume;
-        assertEquals(expected, actual);
+    public void setCurrentWave() {
+        wave.setCurrentWave(8);
+        assertEquals(8, wave.getCurrentWave());
     }
 
     @Test
-    public void RadioMinusVolume() {
-        Radio wave = new Radio();
-        int expected = 0;
-        int actual = wave.decreaseVolume;
-        assertEquals(expected, actual);
+    public void previousRadioWave() {
+        wave.setCurrentWave(0);
+        wave.previousRadioWave();
+        assertEquals(9, wave.getCurrentWave());
     }
 
     @Test
-    public void RadioPlusVolume() {
-        Radio wave = new Radio();
-        int expected = 0;
-        int actual = wave.decreaseVolume;
-        assertEquals(expected, actual);
+    public void setAnyMinusWave() {
+        wave.setCurrentWave(-9);
+        assertEquals(0, wave.getCurrentWave());
+    }
+
+    @Test
+    public void setAnyMinusVolume() {
+        wave.setCurrentVolume(-9);
+        assertEquals(0, wave.getCurrentVolume());
     }
 }
