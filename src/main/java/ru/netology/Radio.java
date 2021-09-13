@@ -2,10 +2,10 @@ package ru.netology;
 
 public class Radio {
 
-    private int minVolume;
-    private int maxVolume = 10;
-    private int minWave;
-    private int maxWave = 9;
+    public int minVolume;
+    public int maxVolume = 10;
+    public int minWave;
+    public int maxWave = 9;
     private int currentWave;
     private int currentVolume;
 
@@ -33,31 +33,14 @@ public class Radio {
         return minVolume;
     }
 
-    public void setMinVolume(int minVolume) {
-        this.minVolume = minVolume;
-    }
-
-    public void setMinWave(int minWave) {
-        this.minWave = minWave;
-    }
-
-    public void setMaxWave(int maxWave) {
-        this.maxWave = maxWave;
-    }
-
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
-
-    public void nextRadioWave(int newCurrentWave) {
-        if (newCurrentWave < maxWave) {
+    public void nextWave() {
+        if (currentWave < maxWave) {
             currentWave++;
         } else {
             currentWave = minWave;
         }
     }
-
-    public void radioPlusVolume() {
+    public void plusVolume() {
 
         if (currentVolume < maxVolume) {
             currentVolume++;
@@ -104,15 +87,7 @@ public class Radio {
         }
     }
 
-    public void nextRadioWave() {
-        if (currentWave < maxWave) {
-            currentWave++;
-        } else {
-            currentWave = minWave;
-        }
-    }
-
-    public void previousRadioWave() {
+    public void previousWave() {
         if (currentWave < maxWave) {
             currentWave = maxWave;
         } else {
