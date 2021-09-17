@@ -10,7 +10,7 @@ class RadioTest {
 
     @Test
     public void nextWave() {
-        wave.setCurrentWave(9);
+        wave.setCurrentWave(10);
         wave.nextWave();
         assertEquals(0, wave.getCurrentWave());
     }
@@ -19,14 +19,14 @@ class RadioTest {
     public void decreaseWave() {
         wave.setCurrentWave(0);
         wave.decreaseWave();
-        assertEquals(9, wave.getCurrentWave());
+        assertEquals(10, wave.getCurrentWave());
     }
 
     @Test
     public void waveAboveMax() {
-        wave.setCurrentWave(11);
+        wave.setCurrentWave(110);
         wave.nextWave();
-        assertEquals(9, wave.getMaxWave());
+        assertEquals(10, wave.getMaxWave());
     }
 
     @Test
@@ -38,44 +38,44 @@ class RadioTest {
 
     @Test
     public void plusVolumeAboveMax() {
-        wave.setCurrentVolume(11);
+        wave.setCurrentVolumeMax(110);
         wave.plusVolume();
-        assertEquals(10, wave.getMaxVolume());
+        assertEquals(100, wave.getMaxVolume());
     }
 
     @Test
     public void decreaseVolumeBelowMin() {
-        wave.setCurrentVolume(-1);
+        wave.setCurrentVolumeMin(-1);
         wave.decreaseVolume();
         assertEquals(0, wave.getMinVolume());
     }
 
     @Test
     public void plusVolumeMax() {
-        wave.setCurrentVolume(10);
+        wave.setCurrentVolumeMax(101);
         wave.plusVolume();
-        assertEquals(10, wave.getMaxVolume());
+        assertEquals(100, wave.getMaxVolume());
     }
 
     @Test
     public void minusVolumeMin() {
-        wave.setCurrentVolume(0);
+        wave.setCurrentVolumeMin(0);
         wave.decreaseVolume();
         assertEquals(0, wave.getMinVolume());
     }
 
     @Test
     public void plusVolume() {
-        wave.setCurrentVolume(3);
+        wave.setCurrentVolumeMax(98);
         wave.plusVolume();
-        assertEquals(4, wave.getCurrentVolume());
+        assertEquals(99, wave.getCurrentVolume());
     }
 
     @Test
     public void decreaseVolume() {
-        wave.setCurrentVolume(3);
+        wave.setCurrentVolumeMin(98);
         wave.decreaseVolume();
-        assertEquals(2, wave.getCurrentVolume());
+        assertEquals(97, wave.getCurrentVolume());
     }
 
     @Test
@@ -83,5 +83,11 @@ class RadioTest {
         wave.setCurrentWave(5);
         wave.decreaseWave();
         assertEquals(4, wave.getCurrentWave());
+    }
+
+    @Test
+    public void setWave() {
+        wave.setCurrentWave(0);
+        assertEquals(0, wave.getCurrentWave());
     }
 }

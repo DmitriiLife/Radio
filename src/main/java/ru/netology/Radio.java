@@ -3,9 +3,9 @@ package ru.netology;
 public class Radio {
 
     public int minVolume;
-    public int maxVolume = 10;
+    public int maxVolume = 100;
     public int minWave;
-    public int maxWave = 9;
+    public int maxWave = 10;
     private int currentWave;
     private int currentVolume;
 
@@ -50,11 +50,15 @@ public class Radio {
         }
     }
 
-    public void setCurrentVolume(int currentVolume) {
+    public void setCurrentVolumeMax(int currentVolume) {
         if (currentVolume > maxVolume) {
             this.currentVolume = maxVolume;
             return;
         }
+        this.currentVolume = currentVolume;
+    }
+
+        public void setCurrentVolumeMin(int currentVolume) {
         if (currentVolume < minVolume) {
             this.currentVolume = minVolume;
             return;
