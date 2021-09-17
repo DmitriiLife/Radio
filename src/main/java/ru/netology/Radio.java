@@ -40,6 +40,7 @@ public class Radio {
             currentWave = minWave;
         }
     }
+
     public void plusVolume() {
 
         if (currentVolume < maxVolume) {
@@ -61,6 +62,22 @@ public class Radio {
         this.currentVolume = currentVolume;
     }
 
+    public void decreaseVolume() {
+        if (currentVolume > minVolume) {
+            currentVolume--;
+        } else {
+            currentVolume = maxVolume;
+        }
+    }
+
+    public void decreaseWave() {
+        if (currentWave > minWave) {
+            currentWave--;
+        } else {
+            currentWave = maxWave;
+        }
+    }
+
     public void setCurrentWave(int currentWave) {
         if (currentWave > maxWave) {
             return;
@@ -70,30 +87,7 @@ public class Radio {
         }
         this.currentWave = currentWave;
     }
-
-    public void decreaseVolume() {
-        if (currentVolume > minVolume) {
-            currentVolume--;
-        } else {
-            currentVolume = minVolume;
-        }
-    }
-
-    public void decreaseWave() {
-        if (currentWave > minWave) {
-            currentWave--;
-        } else {
-            currentWave = minWave;
-        }
-    }
-
-    public void previousWave() {
-        if (currentWave < maxWave) {
-            currentWave = maxWave;
-        } else {
-            currentWave = minWave;
-        }
-    }
 }
+
 
 
