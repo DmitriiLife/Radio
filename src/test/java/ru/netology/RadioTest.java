@@ -1,12 +1,13 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
+import ru.netology.constructor.Radio;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
-    Radio wave = new Radio();
+    Radio wave = new Radio(0, 100, 0, 10, 0, 0);
 
     @Test
     public void nextWave() {
