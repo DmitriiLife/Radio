@@ -1,37 +1,21 @@
 package ru.netology;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
 public class Radio {
 
     public int minVolume;
-    public int maxVolume = 10;
+    public int maxVolume = 100;
     public int minWave;
-    public int maxWave = 9;
+    public int maxWave = 10;
     private int currentWave;
     private int currentVolume;
-
-    public int getCurrentWave() {
-        return currentWave;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public int getMaxWave() {
-        return maxWave;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public int getMinWave() {
-        return minWave;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
 
     public void nextWave() {
         if (currentWave < maxWave) {
@@ -42,7 +26,6 @@ public class Radio {
     }
 
     public void plusVolume() {
-
         if (currentVolume < maxVolume) {
             currentVolume++;
         } else {
@@ -50,11 +33,15 @@ public class Radio {
         }
     }
 
-    public void setCurrentVolume(int currentVolume) {
+    public void setCurrentVolumeMax(int currentVolume) {
         if (currentVolume > maxVolume) {
             this.currentVolume = maxVolume;
             return;
         }
+        this.currentVolume = currentVolume;
+    }
+
+    public void setCurrentVolumeMin(int currentVolume) {
         if (currentVolume < minVolume) {
             this.currentVolume = minVolume;
             return;
@@ -77,17 +64,6 @@ public class Radio {
             currentWave = maxWave;
         }
     }
-
-    public void setCurrentWave(int currentWave) {
-        if (currentWave > maxWave) {
-            return;
-        }
-        if (currentWave < minWave) {
-            return;
-        }
-        this.currentWave = currentWave;
-    }
 }
-
 
 
