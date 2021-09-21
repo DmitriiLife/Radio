@@ -1,20 +1,20 @@
 package ru.netology.constructor;
 
 public class Radio {
+
     public int minVolume;
     public int maxVolume = 100;
     public int minWave;
-    public int maxWave = 10;
+    public int maxWave = 9;
     private int currentWave;
     private int currentVolume;
+    public int numberOfRadioStations;
 
-    public Radio(int minVolume, int maxVolume, int minWave, int maxWave, int currentWave, int currentVolume) {
-        this.minVolume = minVolume;
-        this.maxVolume = maxVolume;
-        this.minWave = minWave;
-        this.maxWave = maxWave;
-        this.currentWave = currentWave;
-        this.currentVolume = currentVolume;
+    public Radio(int numberOfRadioStations) {
+        this.numberOfRadioStations = numberOfRadioStations;
+    }
+
+    public Radio() {
     }
 
     public int getCurrentWave() {
