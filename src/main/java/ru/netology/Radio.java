@@ -1,4 +1,4 @@
-package ru.netology.constructor;
+package ru.netology;
 
 public class Radio {
 

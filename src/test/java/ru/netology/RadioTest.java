@@ -1,7 +1,6 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
-import ru.netology.constructor.Radio;
 
 import static org.junit.jupiter.api.Assertions.*;
 
