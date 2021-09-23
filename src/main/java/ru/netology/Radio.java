@@ -5,16 +5,17 @@ public class Radio {
     public int minVolume;
     public int maxVolume = 100;
     public int minWave;
-    public int maxWave = 9;
+    private int maxWave = 9;
     private int currentWave;
     private int currentVolume;
     public int numberOfRadioStations;
 
-    public Radio(int numberOfRadioStations) {
-        this.numberOfRadioStations = numberOfRadioStations;
+    public Radio() {
     }
 
-    public Radio() {
+    public Radio(int maxWave, int numberOfRadioStations) {
+        this.maxWave = maxWave;
+        this.numberOfRadioStations = numberOfRadioStations;
     }
 
     public int getCurrentWave() {
@@ -98,6 +99,16 @@ public class Radio {
             return;
         }
         this.currentWave = currentWave;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > maxVolume) {
+            return;
+        }
+        if (currentVolume < minVolume) {
+            return;
+        }
+        this.currentVolume = currentVolume;
     }
 }
 

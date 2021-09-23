@@ -2,118 +2,161 @@ package ru.netology;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadioTest {
 
-    Radio radio = new Radio();
-    Radio radioOne = new Radio(20);
+    Radio radioDefault = new Radio();
+    Radio radio20Stations = new Radio(19, 20);
 
     @Test
-    public void nextWave() {
-        radio.setCurrentWave(9);
-        radio.nextWave();
-        radioOne.setCurrentWave(8);
-        radioOne.nextWave();
-        assertEquals(0, radio.getCurrentWave(), radioOne.getCurrentWave());
+    public void setWave() {
+        radioDefault.setCurrentWave(7);
+        assertEquals(7, radioDefault.getCurrentWave());
     }
 
     @Test
-    public void decreaseWave() {
-        radio.setCurrentWave(0);
-        radio.decreaseWave();
-        radioOne.setCurrentWave(0);
-        radioOne.decreaseWave();
-        assertEquals(9, radio.getCurrentWave(), radioOne.getCurrentWave());
-    }
-
-    @Test
-    public void waveAboveMax() {
-        radio.setCurrentWave(110);
-        radio.nextWave();
-        radioOne.setCurrentWave(110);
-        radioOne.nextWave();
-        assertEquals(9, radio.getMaxWave(), radioOne.getMaxWave());
-    }
-
-    @Test
-    public void waveBelowMin() {
-        radio.setCurrentWave(-1);
-        radio.nextWave();
-        radioOne.setCurrentWave(-1);
-        radioOne.nextWave();
-        assertEquals(0, radio.getMinWave(), radioOne.getMinWave());
-    }
-
-    @Test
-    public void plusVolumeAboveMax() {
-        radio.setCurrentVolumeMax(110);
-        radio.plusVolume();
-        radioOne.setCurrentVolumeMax(110);
-        radioOne.plusVolume();
-        assertEquals(100, radio.getMaxVolume(), radioOne.getMaxVolume());
-    }
-
-    @Test
-    public void decreaseVolumeBelowMin() {
-        radio.setCurrentVolumeMin(-1);
-        radio.decreaseVolume();
-        radioOne.setCurrentVolumeMin(-1);
-        radioOne.decreaseVolume();
-        assertEquals(0, radio.getMinVolume(), radioOne.getMinVolume());
-    }
-
-    @Test
-    public void plusVolumeMax() {
-        radio.setCurrentVolumeMax(101);
-        radio.plusVolume();
-        radioOne.setCurrentVolumeMax(101);
-        radioOne.plusVolume();
-        assertEquals(100, radio.getMaxVolume(), radioOne.getMaxVolume());
-    }
-
-    @Test
-    public void minusVolumeMin() {
-        radio.setCurrentVolumeMin(0);
-        radio.decreaseVolume();
-        radioOne.setCurrentVolumeMin(0);
-        radioOne.decreaseVolume();
-        assertEquals(0, radio.getMinVolume(), radioOne.getMinVolume());
-    }
-
-    @Test
-    public void plusVolume() {
-        radio.setCurrentVolumeMax(98);
-        radio.plusVolume();
-        radioOne.setCurrentVolumeMax(98);
-        radioOne.plusVolume();
-        assertEquals(99, radio.getCurrentVolume(), radioOne.getCurrentVolume());
-    }
-
-    @Test
-    public void decreaseVolume() {
-        radio.setCurrentVolumeMin(98);
-        radio.decreaseVolume();
-        radioOne.setCurrentVolumeMin(98);
-        radioOne.decreaseVolume();
-        assertEquals(97, radio.getCurrentVolume(), radioOne.getCurrentVolume());
+    public void setWaveRadio20() {
+        radio20Stations.setCurrentWave(14);
+        assertEquals(14, radio20Stations.getCurrentWave());
     }
 
     @Test
     public void minusWave() {
-        radio.setCurrentWave(5);
-        radio.decreaseWave();
-        radioOne.setCurrentWave(5);
-        radioOne.decreaseWave();
-        assertEquals(4, radio.getCurrentWave(), radioOne.getCurrentWave());
+        radioDefault.setCurrentWave(5);
+        radioDefault.decreaseWave();
+        assertEquals(4, radioDefault.getCurrentWave());
     }
 
     @Test
-    public void setWave() {
-        radio.setCurrentWave(0);
-        radio.setCurrentWave(0);
-        radioOne.setCurrentWave(0);
-        radioOne.setCurrentWave(0);
-        assertEquals(0, radio.getCurrentWave(), radioOne.getCurrentWave());
+    public void minusWaveRadio20() {
+        radio20Stations.setCurrentWave(17);
+        radio20Stations.decreaseWave();
+        assertEquals(16, radio20Stations.getCurrentWave());
+    }
+
+    @Test
+    public void nextWave() {
+        radioDefault.setCurrentWave(9);
+        radioDefault.nextWave();
+        assertEquals(0, radioDefault.getCurrentWave());
+    }
+
+    @Test
+    public void nextWaveRadio20() {
+        radio20Stations.setCurrentWave(19);
+        radio20Stations.nextWave();
+        assertEquals(0, radio20Stations.getCurrentWave());
+    }
+
+    @Test
+    public void decreaseWave() {
+        radioDefault.setCurrentWave(0);
+        radioDefault.decreaseWave();
+        assertEquals(9, radioDefault.getCurrentWave());
+    }
+
+    @Test
+    public void decreaseWaveRadio20() {
+        radio20Stations.setCurrentWave(0);
+        radio20Stations.decreaseWave();
+        assertEquals(19, radio20Stations.getCurrentWave());
+    }
+
+    @Test
+    public void waveAboveMax() {
+        radioDefault.setCurrentWave(110);
+        radioDefault.nextWave();
+        assertEquals(9, radioDefault.getMaxWave());
+    }
+
+    @Test
+    public void waveAboveMaxRadio20() {
+        radio20Stations.setCurrentWave(110);
+        radio20Stations.nextWave();
+        assertEquals(19, radio20Stations.getMaxWave());
+    }
+
+    @Test
+    public void waveBelowMin() {
+        radioDefault.setCurrentWave(-1);
+        radioDefault.nextWave();
+        assertEquals(0, radioDefault.getMinWave());
+    }
+
+    @Test
+    public void waveBelowMinRadio20() {
+        radio20Stations.setCurrentWave(-1);
+        radio20Stations.nextWave();
+        assertEquals(0, radio20Stations.getMinWave());
+    }
+
+
+    @Test
+    public void plusVolumeAboveMax() {
+        radioDefault.setCurrentVolumeMax(101);
+        radioDefault.plusVolume();
+        assertEquals(100, radioDefault.getMaxVolume());
+    }
+
+    @Test
+    public void plusVolumeAboveMaxRadio20() {
+        radio20Stations.setCurrentVolumeMax(101);
+        radio20Stations.plusVolume();
+        assertEquals(100, radio20Stations.getMaxVolume());
+    }
+
+    @Test
+    public void minusBelowVolumeMin() {
+        radioDefault.setCurrentVolumeMin(-1);
+        radioDefault.decreaseVolume();
+        assertEquals(0, radioDefault.getMinVolume());
+    }
+
+    @Test
+    public void minusBelowVolumeMinRadio20() {
+        radio20Stations.setCurrentVolumeMin(-3);
+        radio20Stations.decreaseVolume();
+        assertEquals(0, radio20Stations.getMinVolume());
+    }
+
+    @Test
+    public void plusVolume() {
+        radioDefault.setCurrentVolumeMax(98);
+        radioDefault.plusVolume();
+        assertEquals(99, radioDefault.getCurrentVolume());
+    }
+
+    @Test
+    public void plusVolumeRadio20() {
+        radio20Stations.setCurrentVolumeMax(98);
+        radio20Stations.plusVolume();
+        assertEquals(99, radio20Stations.getCurrentVolume());
+    }
+
+    @Test
+    public void minusVolume() {
+        radioDefault.setCurrentVolumeMin(98);
+        radioDefault.decreaseVolume();
+        assertEquals(97, radioDefault.getCurrentVolume());
+    }
+
+    @Test
+    public void minusVolumeRadio20() {
+        radio20Stations.setCurrentVolumeMin(98);
+        radio20Stations.decreaseVolume();
+        assertEquals(97, radio20Stations.getCurrentVolume());
+    }
+
+    @Test
+    public void setVolume() {
+        radioDefault.setCurrentVolume(7);
+        assertEquals(7, radioDefault.getCurrentVolume());
+    }
+
+    @Test
+    public void setVolumeRadio20() {
+        radio20Stations.setCurrentVolume(87);
+        assertEquals(87, radio20Stations.getCurrentVolume());
     }
 }
