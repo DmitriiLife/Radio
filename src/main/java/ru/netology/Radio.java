@@ -8,14 +8,12 @@ public class Radio {
     private int maxWave = 9;
     private int currentWave;
     private int currentVolume;
-    public int numberOfRadioStations;
 
     public Radio() {
     }
 
-    public Radio(int maxWave, int numberOfRadioStations) {
+    public Radio(int maxWave) {
         this.maxWave = maxWave;
-        this.numberOfRadioStations = numberOfRadioStations;
     }
 
     public int getCurrentWave() {
