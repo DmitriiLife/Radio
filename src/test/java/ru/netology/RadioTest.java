@@ -17,8 +17,8 @@ class RadioTest {
 
     @Test
     public void setWaveRadio20() {
-        radio20Stations.setCurrentWave(14);
-        assertEquals(14, radio20Stations.getCurrentWave());
+        radio20Stations.setCurrentWave(19);
+        assertEquals(19, radio20Stations.getCurrentWave());
     }
 
     @Test
@@ -32,7 +32,7 @@ class RadioTest {
     public void minusWaveRadio20() {
         radio20Stations.setCurrentWave(17);
         radio20Stations.decreaseWave();
-        assertEquals(16, radio20Stations.getCurrentWave());
+        assertEquals(18, radio20Stations.getCurrentWave());
     }
 
     @Test
@@ -58,21 +58,21 @@ class RadioTest {
 
     @Test
     public void decreaseWaveRadio20() {
-        radio20Stations.setCurrentWave(0);
         radio20Stations.decreaseWave();
-        assertEquals(19, radio20Stations.getCurrentWave());
+        assertEquals(18, radio20Stations.getCurrentWave());
     }
 
     @Test
     public void waveAboveMax() {
-        radioDefault.setCurrentWave(110);
+        radioDefault.setCurrentVolume(14);
         radioDefault.nextWave();
         assertEquals(9, radioDefault.getMaxWave());
     }
 
     @Test
     public void waveAboveMaxRadio20() {
-        radio20Stations.setCurrentWave(110);
+        radio20Stations.setCurrentWave(35);
+        radio20Stations.setMaxWave(19);
         radio20Stations.nextWave();
         assertEquals(19, radio20Stations.getMaxWave());
     }
@@ -90,7 +90,6 @@ class RadioTest {
         radio20Stations.nextWave();
         assertEquals(0, radio20Stations.getMinWave());
     }
-
 
     @Test
     public void plusVolumeAboveMax() {
