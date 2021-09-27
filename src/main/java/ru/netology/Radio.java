@@ -22,59 +22,44 @@ public class Radio {
     }
 
     public void nextWave() {
-        if (currentWave < maxWave) {
-            currentWave++;
-        } else {
-            currentWave = minWave;
+        if (currentWave == maxWave) {
+            this.currentWave = 0;
+       return;
         }
+        this.currentWave++;
     }
 
     public void plusVolume() {
 
-        if (currentVolume < maxVolume) {
-            currentVolume++;
-        } else {
-            currentVolume = maxVolume;
-        }
-    }
-
-    public void setCurrentVolumeMax(int currentVolume) {
-        if (currentVolume > maxVolume) {
-            this.currentVolume = maxVolume;
+        if (currentVolume == maxVolume) {
             return;
         }
-        this.currentVolume = currentVolume;
-    }
-
-    public void setCurrentVolumeMin(int currentVolume) {
-        if (currentVolume < minVolume) {
-            this.currentVolume = minVolume;
-            return;
-        }
-        this.currentVolume = currentVolume;
+        this.currentVolume++;
     }
 
     public void decreaseVolume() {
-        if (currentVolume > minVolume) {
-            currentVolume--;
-        } else {
-            currentVolume = maxVolume;
+        if (currentVolume == minVolume) {
+            return;
         }
-    }
+            currentVolume--;
+        }
+
 
     public void decreaseWave() {
-        if (currentWave > minWave) {
-            currentWave--;
-        } else {
-            currentWave = maxWave;
+        if (currentWave == minWave) {
+           this.currentWave = 9;
+        return;
         }
+        this.currentWave--;
     }
 
     public void setCurrentWave(int currentWave) {
         if (currentWave > maxWave) {
+            this.currentWave = maxWave;
             return;
         }
         if (currentWave < minWave) {
+            this.currentWave = minWave;
             return;
         }
         this.currentWave = currentWave;
@@ -82,9 +67,11 @@ public class Radio {
 
     public void setCurrentVolume(int currentVolume) {
         if (currentVolume > maxVolume) {
+            this.currentVolume = maxVolume;
             return;
         }
         if (currentVolume < minVolume) {
+            this.currentVolume = minVolume;
             return;
         }
         this.currentVolume = currentVolume;
