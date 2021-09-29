@@ -4,62 +4,61 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
-@AllArgsConstructor
-
 public class Radio {
 
-    public int minVolume;
-    public int maxVolume = 100;
-    public int minWave;
-    private int maxWave = 9;
+    private int minVolume;
+    private int maxVolume = 100;
+    private int minWave;
     private int currentWave;
     private int currentVolume;
+    private int maxWave = 9;
+    private int numberOfRadioStations;
 
-    public Radio(int currentWave) {
-        this.currentWave = currentWave;
+    public Radio(int numberOfRadioStations) {
+        this.numberOfRadioStations = numberOfRadioStations;
+        this.maxWave = numberOfRadioStations - 1;
     }
 
     public void nextWave() {
-        if (currentWave == maxWave) {
-            this.currentWave = 0;
-       return;
+        if (currentWave < maxWave) {
+            currentWave++;
+        } else {
+            currentWave = minWave;
         }
-        this.currentWave++;
     }
 
     public void plusVolume() {
-
-        if (currentVolume == maxVolume) {
-            return;
+        if (currentVolume < maxVolume) {
+            currentVolume++;
+        } else {
+            currentVolume = maxVolume;
         }
-        this.currentVolume++;
     }
 
     public void decreaseVolume() {
-        if (currentVolume == minVolume) {
-            return;
-        }
+        if (currentVolume > minVolume) {
             currentVolume--;
+        } else {
+            currentVolume = maxVolume;
         }
-
+    }
 
     public void decreaseWave() {
-        if (currentWave == minWave) {
-           this.currentWave = 9;
-        return;
+        if (currentWave > minWave) {
+            currentWave--;
+        } else {
+            currentWave = maxWave;
         }
-        this.currentWave--;
     }
 
     public void setCurrentWave(int currentWave) {
         if (currentWave > maxWave) {
-            this.currentWave = maxWave;
             return;
         }
         if (currentWave < minWave) {
-            this.currentWave = minWave;
             return;
         }
         this.currentWave = currentWave;

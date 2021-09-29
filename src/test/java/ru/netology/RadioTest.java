@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RadioTest {
 
     Radio radioDefault = new Radio();
-    Radio radio20Stations = new Radio(19);
+    Radio radio20Stations = new Radio(20);
 
     @Test
     public void setWave() {
@@ -17,7 +17,8 @@ class RadioTest {
 
     @Test
     public void setWaveRadio20() {
-        assertEquals(19, radio20Stations.getCurrentWave());
+        radio20Stations.setCurrentWave(18);
+        assertEquals(18, radio20Stations.getCurrentWave());
     }
 
     @Test
@@ -29,6 +30,7 @@ class RadioTest {
 
     @Test
     public void minusWaveRadio20() {
+        radio20Stations.setCurrentWave(19);
         radio20Stations.decreaseWave();
         assertEquals(18, radio20Stations.getCurrentWave());
     }
@@ -42,9 +44,9 @@ class RadioTest {
 
     @Test
     public void nextWaveRadio20() {
-        radio20Stations.setCurrentWave(19);
+        radio20Stations.setCurrentWave(12);
         radio20Stations.nextWave();
-        assertEquals(0, radio20Stations.getCurrentWave());
+        assertEquals(13, radio20Stations.getCurrentWave());
     }
 
     @Test
@@ -56,8 +58,9 @@ class RadioTest {
 
     @Test
     public void decreaseWaveRadio20() {
+        radio20Stations.setCurrentWave(0);
         radio20Stations.decreaseWave();
-        assertEquals(18, radio20Stations.getCurrentWave());
+        assertEquals(19, radio20Stations.getCurrentWave());
     }
 
     @Test
@@ -70,7 +73,6 @@ class RadioTest {
     @Test
     public void waveAboveMaxRadio20() {
         radio20Stations.setCurrentWave(35);
-        radio20Stations.setMaxWave(19);
         radio20Stations.nextWave();
         assertEquals(19, radio20Stations.getMaxWave());
     }
@@ -155,5 +157,11 @@ class RadioTest {
     public void setVolumeRadio20() {
         radio20Stations.setCurrentVolume(87);
         assertEquals(87, radio20Stations.getCurrentVolume());
+    }
+
+    @Test
+    public void allParameters() {
+        Radio radio = new Radio(0,100,0,0,0,100,101);
+    assertEquals(101, radio.getNumberOfRadioStations());
     }
 }
